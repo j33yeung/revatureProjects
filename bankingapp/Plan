@@ -1,0 +1,55 @@
+Project 0 Requirements - Due 4/20/2022
+
+The following are the specifications for Project 0.
+Project 0 is a simple banking simulation. The project will occur in 2 phases.
+
+Phase 1
+Simple Java web application using Javalin with persistence
+
+User stories
+
+Classes/Interfaces
+- Bank UserService Interface
+- Bank UserServiceImpl Class
+- Bank User Class
+
+- Bank Employee Class - Dependency injection employee relies on bank user
+    -Employee can validate if a user wants to request a bank account, and the service will start up a new entry in the
+     database for the employee.
+-Bank EmployeeServiceImp
+-Bank EmployeeService Interface
+
+-Credit System Check Class
+
+-Controller - concerned on receive the request (i.e.Main)
+-Service - concerned about the work (i.e. Greeting Service)
+-DAO (data access objects) Repository - concerned with persistence - working with data
+
+
+As a bank user I can
+    login to my account(s) - DONE
+    view my balance - DONE
+    deposit money - DONE
+    withdraw money - DONE
+    transfer money to other accounts - DONE
+    view my transaction history -----
+    apply for line(s) of credit - DONE
+
+As a bank employee I can
+    open/create accounts for bank users - DONE
+    manually review credit requests - DONE
+
+The system should simulate the credit approval process - SYSTEM DONE
+    Excellent credit -- automatic approval low interest
+    Good credit -- automatic approval low-high interest
+    Poor credit -- requires review high interest
+    Bad credit -- automatic denial
+
+The application will be created using
+    Your choice of IDE                              -IntelliJ DONE
+    Java 1.8                                        -Java DONE
+    JUnit                                           -JUnit DONE
+    log4j or logback                                -NEED MORE LOGS
+    MySQL Database(phase 2)
+    Javalin Web Framework
+    Postman or Insomnia (manual testing)
