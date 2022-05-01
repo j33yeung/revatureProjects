@@ -1,0 +1,21 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /bears
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+spring:
+  datasource:
+    username: root
+    password: Ccc12345!!!
+    url: jdbc:mysql://34.130.53.121:3306/reimbursements
+  jpa:
+    hibernate:
+#      if you have capital letters for table names
+      physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show_sql: true
