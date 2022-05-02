@@ -4,12 +4,11 @@ import lombok.*;
 import org.hibernate.annotations.Check;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
-@Table(name="reimbursement")
+@Table(name="reimbursements")
 @Getter
 @Setter
 @ToString
@@ -17,7 +16,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Check(constraints = "expenditure >= 0")
-public class Reimbursement implements Serializable {
+public class Reimbursement {
 
     @Id
     @Column(name="id", columnDefinition = "AUTO_INCREMENT")
@@ -27,11 +26,18 @@ public class Reimbursement implements Serializable {
     @Column(name="item_name")
     private String itemName;
 
+    @Enumerated(EnumType.STRING)
     @Column(name="item_status")
     private Status itemStatus; //(there are only three available status - pending, approved, declined)
 
     private BigDecimal expenditure;
-    private Date date;
+
+    @Column(name="_date")
+    private LocalDate date;
+
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name="employee_id", referencedColumnName = "id")
+    private Employee employee;
 
     @Column(name="item_descriptor")
     private String itemDescriptor;

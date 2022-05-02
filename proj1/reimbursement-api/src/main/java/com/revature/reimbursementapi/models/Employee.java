@@ -19,15 +19,19 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(name="_name")
     private String name;
 //    private boolean isEmployee; // true if employee, false if manager
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @Column(name="email", unique = true)
     private String email;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name="manager_id", updatable = false, insertable = false)
-    private int manager_id;
+//    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//    @JoinColumn(name="reimbursement_id", updatable = false, insertable = false)
+//    private int reimbursement_id;
+
+//    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//    @JoinColumn(name="manager_id", updatable = false, insertable = false)
+//    private int manager_id;
 
 }
