@@ -1,5 +1,7 @@
 package com.revature.reimbursementapi.controllers;
 
+import com.revature.reimbursementapi.models.ApprovalDTO;
+import com.revature.reimbursementapi.models.ReassignDTO;
 import com.revature.reimbursementapi.models.ReimbursementDTO;
 import com.revature.reimbursementapi.models.Reimbursement;
 import com.revature.reimbursementapi.repositories.EmployeeRepository;
@@ -69,4 +71,15 @@ public class ReimbursementController {
     public void addReimbursement(@RequestBody ReimbursementDTO reimbursementDTO) {
         reimbursementService.createReimbursement(reimbursementDTO);
     }
+
+    @PostMapping(path = "managers/approval")
+    public void reimbursementApproval(@RequestBody ApprovalDTO approvalDTO) {
+        reimbursementService.approveReimbursement(approvalDTO);
+    }
+
+    @PostMapping(path = "managers/reassign")
+    public void reimbursementReassign(@RequestBody ReassignDTO reassignDTO) {
+        reimbursementService.reassignReimbursement(reassignDTO);
+    }
+
 }

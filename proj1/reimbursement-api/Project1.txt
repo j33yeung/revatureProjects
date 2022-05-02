@@ -11,11 +11,11 @@ Goal: Build 2 separarte web APIs using spring boot and deploy and orchestrate th
 API 1
 Request reimbursement API
 As a Employee I can:
-	Submit a reimbursement request
-	View all of my reimbursements
+	Submit a reimbursement request ------- DONE
+	View all of my reimbursements -------- DONE
 As a Manager I can:
-	View all reimbursements
-	Approve/Deny/Reassign reimbursements
+	View all reimbursements -------------- DONE
+	Approve/Deny/Reassign reimbursements-- DONE
 API 2
 Email API
 Receive request to send emails to specfied users.
