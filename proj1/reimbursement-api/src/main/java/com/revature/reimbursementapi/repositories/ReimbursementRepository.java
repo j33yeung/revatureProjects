@@ -1,5 +1,6 @@
 package com.revature.reimbursementapi.repositories;
 
+import com.revature.reimbursementapi.models.Employee;
 import com.revature.reimbursementapi.models.Reimbursement;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
@@ -16,5 +17,7 @@ public interface ReimbursementRepository extends JpaRepository<Reimbursement, In
      * @return the list of reimbursements associated with this employee's id
      */
     List<Reimbursement> findAllReimbursementsByEmployeeId(@Param("id") int id);
+
+    Reimbursement findById(@Param("id") int id);
 
 }

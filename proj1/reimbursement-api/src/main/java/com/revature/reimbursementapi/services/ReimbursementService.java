@@ -5,12 +5,10 @@ import com.revature.reimbursementapi.repositories.EmployeeRepository;
 import com.revature.reimbursementapi.repositories.ReimbursementRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -38,7 +36,7 @@ public class ReimbursementService {
 //        return true;
 //    }
 
-    public void createReimbursement(ReimbursementDTO reimbursementDTO){
+    public void createReimbursement(ReimbursementDTO reimbursementDTO) {
 
         Reimbursement reimbursement = new Reimbursement();
 
@@ -49,36 +47,30 @@ public class ReimbursementService {
         reimbursement.setItemDescriptor(reimbursementDTO.getItemDescriptor());
 
         int employeeId = reimbursementDTO.getEmployeeId();
-        Employee e = employeeRepository.findById(employeeId);
-        reimbursement.setEmployee(e);
+        Employee employee = employeeRepository.findById(employeeId);
+        reimbursement.setEmployee(employee);
 
-//        String itemName = reimbursementDTO.getItemName();
-//        Status itemStatus = reimbursementDTO.getItemStatus();
-//        BigDecimal expenditure = reimbursementDTO.getExpenditure();
-//        LocalDate date = reimbursementDTO.getDate();
-//
 //        int employeeId = reimbursementDTO.getEmployeeId();
-//        logger.debug("Find employee: {}", employeeRepository.findById(employeeId));
-//        Employee employee = employeeRepository.findById(employeeId);
-//
-//        String itemDescriptor = reimbursementDTO.getItemDescriptor();
-//
-//        Reimbursement reimbursement = new Reimbursement(0, itemName, itemStatus, expenditure, date, employee, itemDescriptor);
+//        Employee e = employeeRepository.findById(employeeId);
+//        reimbursement.setEmployee(e);
+
         reimbursementRepository.save(reimbursement);
     }
 
     public void approveReimbursement(ApprovalDTO approvalDTO) {
 
         Reimbursement r = reimbursementRepository.getById(approvalDTO.getReimbursementId());
-        if (r != null) {
-            switch(approvalDTO.getItemStatus()){
-                case APPROVED:
-                    r.setItemStatus(Status.APPROVED);
-                    break;
-                case DECLINED:
-                    r.setItemStatus(Status.DECLINED);
-                    break;
-            }
+
+        switch(approvalDTO.getItemStatus()){
+            case "PENDING":
+                r.setItemStatus(Status.PENDING);
+                break;
+            case "APPROVED":
+                r.setItemStatus(Status.APPROVED);
+                break;
+            case "DECLINED":
+                r.setItemStatus(Status.DECLINED);
+                break;
         }
     }
 
@@ -86,9 +78,8 @@ public class ReimbursementService {
 
         Reimbursement r = reimbursementRepository.getById(reassignDTO.getReimbursementId());
         Employee e = employeeRepository.findById(reassignDTO.getNewEmployeeId());
-        if(r != null){
-            r.setEmployee(e); //need new employee id that you want to change to
-        }
+        r.setEmployee(e); //need new employee id that you want to change to
+
     }
 
 }
