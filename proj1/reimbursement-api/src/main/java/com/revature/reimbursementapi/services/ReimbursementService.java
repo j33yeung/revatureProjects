@@ -26,17 +26,7 @@ public class ReimbursementService {
 
     final Logger logger = LoggerFactory.getLogger(ReimbursementService.class);
 
-
-//    public boolean saveReimbursement(Reimbursement reimbursement){
-//        LocalDate date = LocalDate.now();
-//        reimbursement.setDate(date);
-//        Employee newEmployee = employeeRepository.findEmployeeById(1);
-//        reimbursement.setEmployee(newEmployee);
-//        reimbursementRepository.save(reimbursement);
-//        return true;
-//    }
-
-    public void createReimbursement(ReimbursementDTO reimbursementDTO) {
+    public Reimbursement createReimbursement(ReimbursementDTO reimbursementDTO) {
 
         Reimbursement reimbursement = new Reimbursement();
 
@@ -50,36 +40,37 @@ public class ReimbursementService {
         Employee employee = employeeRepository.findById(employeeId);
         reimbursement.setEmployee(employee);
 
-//        int employeeId = reimbursementDTO.getEmployeeId();
-//        Employee e = employeeRepository.findById(employeeId);
-//        reimbursement.setEmployee(e);
-
         reimbursementRepository.save(reimbursement);
+
+        return reimbursement;
     }
 
-    public void approveReimbursement(ApprovalDTO approvalDTO) {
+    public Reimbursement approveReimbursement(ApprovalDTO approvalDTO) {
 
-        Reimbursement r = reimbursementRepository.getById(approvalDTO.getReimbursementId());
+        Reimbursement reimbursement = reimbursementRepository.findById(approvalDTO.getReimbursementId());
 
         switch(approvalDTO.getItemStatus()){
             case "PENDING":
-                r.setItemStatus(Status.PENDING);
+                reimbursement.setItemStatus(Status.PENDING);
                 break;
             case "APPROVED":
-                r.setItemStatus(Status.APPROVED);
+                reimbursement.setItemStatus(Status.APPROVED);
                 break;
             case "DECLINED":
-                r.setItemStatus(Status.DECLINED);
+                reimbursement.setItemStatus(Status.DECLINED);
                 break;
         }
+
+        return reimbursement;
     }
 
-    public void reassignReimbursement(ReassignDTO reassignDTO) {
+    public Reimbursement reassignReimbursement(ReassignDTO reassignDTO) {
 
-        Reimbursement r = reimbursementRepository.getById(reassignDTO.getReimbursementId());
-        Employee e = employeeRepository.findById(reassignDTO.getNewEmployeeId());
-        r.setEmployee(e); //need new employee id that you want to change to
+        Reimbursement reimbursement = reimbursementRepository.findById(reassignDTO.getReimbursementId());
+        Employee employee = employeeRepository.findById(reassignDTO.getNewEmployeeId());
+        reimbursement.setEmployee(employee); //need new employee id that you want to change to
+
+        return reimbursement;
 
     }
-
 }

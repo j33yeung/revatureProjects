@@ -16,6 +16,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Check(constraints = "expenditure >= 0")
+@Builder
 public class Reimbursement {
 
     @Id

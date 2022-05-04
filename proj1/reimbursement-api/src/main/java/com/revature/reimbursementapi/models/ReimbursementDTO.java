@@ -11,6 +11,7 @@ import java.time.LocalDate;
 @EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class ReimbursementDTO {
 
     private String itemName;

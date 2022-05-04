@@ -1,19 +1,15 @@
 package com.revature.reimbursementapi.controllers;
 
-import com.revature.reimbursementapi.BadRequestHandler;
 import com.revature.reimbursementapi.models.*;
 import com.revature.reimbursementapi.repositories.EmployeeRepository;
 import com.revature.reimbursementapi.repositories.ReimbursementRepository;
 import com.revature.reimbursementapi.services.ReimbursementService;
-import com.sun.istack.NotNull;
 import lombok.Setter;
-import org.hibernate.annotations.NotFound;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -105,6 +101,12 @@ public class ReimbursementController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid employee id provided");
         }
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid reimbursement id provided");
+    }
+
+    @DeleteMapping(path = "{reimbursementId}")
+    public ResponseEntity deleteReimbursement(@PathVariable int reimbursementId){
+        reimbursementRepository.deleteById(reimbursementId);
+        return ResponseEntity.ok().body("Delete successful");
     }
 
 }

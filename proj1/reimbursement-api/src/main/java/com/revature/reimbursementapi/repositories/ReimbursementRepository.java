@@ -1,10 +1,13 @@
 package com.revature.reimbursementapi.repositories;
 
-import com.revature.reimbursementapi.models.Employee;
 import com.revature.reimbursementapi.models.Reimbursement;
+import org.hibernate.Session;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.context.annotation.SessionScope;
 
 import java.util.List;
 
@@ -19,5 +22,11 @@ public interface ReimbursementRepository extends JpaRepository<Reimbursement, In
     List<Reimbursement> findAllReimbursementsByEmployeeId(@Param("id") int id);
 
     Reimbursement findById(@Param("id") int id);
+
+    Reimbursement findByItemName(@Param("item_name") String itemName);
+
+    @Modifying
+    @Query(value = "DELETE FROM reimbursements WHERE id = ?1", nativeQuery = true)
+    void deleteById(int id);
 
 }
