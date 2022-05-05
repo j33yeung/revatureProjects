@@ -1,0 +1,20 @@
+services:
+  web:
+    image: reimbursement-app
+    container_name: app1
+    restart: always
+    environment:
+      - DB_URL=jdbc:mysql://34.130.53.121:3306/ReimbursementAPI
+    ports:
+      - 7000:7000
+    depends_on:
+      - db
+  db:
+    image: mysql
+    container_name: db
+    #command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=Ccc12345!!!
+      - MYSQL_DATABASE=my-docker-database
+      - MYSQL_ROOT_USER=root
