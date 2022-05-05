@@ -50,13 +50,13 @@ public class ReimbursementService {
         Reimbursement reimbursement = reimbursementRepository.findById(approvalDTO.getReimbursementId());
 
         switch(approvalDTO.getItemStatus()){
-            case "PENDING":
+            case PENDING:
                 reimbursement.setItemStatus(Status.PENDING);
                 break;
-            case "APPROVED":
+            case APPROVED:
                 reimbursement.setItemStatus(Status.APPROVED);
                 break;
-            case "DECLINED":
+            case DECLINED:
                 reimbursement.setItemStatus(Status.DECLINED);
                 break;
         }

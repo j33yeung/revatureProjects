@@ -18,7 +18,7 @@ import java.net.URISyntaxException;
 public class TestController implements BeanNameAware {
 
     public TestController() {
-        System.out.println("Creating controller instance");
+        //System.out.println("Creating controller instance");
     }
 
     @GetMapping

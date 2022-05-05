@@ -6,10 +6,10 @@ import lombok.ToString;
 public enum Status {
     PENDING, APPROVED, DECLINED;
 
-    public static boolean contains(String enumValue) {
+    public static boolean contains(Status enumValue) {
 
         for (Status c : Status.values()) {
-            if ((c.name()).equals(enumValue)) {
+            if (c.equals(enumValue)) {
                 return true;
             }
         }

@@ -9,9 +9,6 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 public class ReimbursementApiApplication {
 
-	@Autowired
-	ReimbursementRepository reimbursementRepository;
-
 	public static void main(String[] args) {
 		SpringApplication.run(ReimbursementApiApplication.class, args);
 	}

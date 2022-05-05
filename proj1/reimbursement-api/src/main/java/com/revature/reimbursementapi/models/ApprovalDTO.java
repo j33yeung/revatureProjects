@@ -12,6 +12,6 @@ import lombok.*;
 public class ApprovalDTO {
 
     private int reimbursementId;
-    private String itemStatus;
+    private Status itemStatus;
 
 }

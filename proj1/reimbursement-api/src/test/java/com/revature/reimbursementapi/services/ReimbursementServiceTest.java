@@ -106,9 +106,9 @@ class ReimbursementServiceTest {
     // When this test is run, reimbursementService will find the reimbursement by Id, change and assertEquals against all types of item statuses
     @Test
     public void shouldApproveAllReimbursements(){
-        approvedDTO = ApprovalDTO.builder().reimbursementId(1).itemStatus("APPROVED").build();
-        declinedDTO = ApprovalDTO.builder().reimbursementId(1).itemStatus("DECLINED").build();
-        pendingDTO = ApprovalDTO.builder().reimbursementId(1).itemStatus("PENDING").build();
+        approvedDTO = ApprovalDTO.builder().reimbursementId(1).itemStatus(Status.APPROVED).build();
+        declinedDTO = ApprovalDTO.builder().reimbursementId(1).itemStatus(Status.DECLINED).build();
+        pendingDTO = ApprovalDTO.builder().reimbursementId(1).itemStatus(Status.PENDING).build();
 
         Reimbursement reimbursement = reimbursementService.approveReimbursement(approvedDTO);
         Assertions.assertEquals(Status.APPROVED, reimbursement.getItemStatus());

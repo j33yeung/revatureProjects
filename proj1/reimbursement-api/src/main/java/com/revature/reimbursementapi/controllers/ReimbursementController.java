@@ -18,13 +18,16 @@ import java.util.Optional;
 @RequestMapping("reimbursements")
 public class ReimbursementController {
 
-    final Logger logger = LoggerFactory.getLogger(ReimbursementController.class);
+//    @Value("${EMAIL_URL}")
+//    private final String emailApiUrl;
 
-    @Setter(onMethod = @__({@Autowired}))
-    private ReimbursementRepository reimbursementRepository;
+    final Logger logger = LoggerFactory.getLogger(ReimbursementController.class);
 
     @Autowired
     ReimbursementService reimbursementService;
+
+    @Setter(onMethod = @__({@Autowired}))
+    private ReimbursementRepository reimbursementRepository;
 
     @Setter(onMethod = @__({@Autowired}))
     private EmployeeRepository employeeRepository;
@@ -37,20 +40,20 @@ public class ReimbursementController {
     }
 
     @GetMapping(path = "{id}")
-    public ResponseEntity getReimbursementWithId(@PathVariable Integer id) {
+    public ResponseEntity getReimbursementWithId(@PathVariable int id) {
         logger.debug("Get reimbursement with ID: {}", reimbursementRepository.findById(id));
-        Optional<Reimbursement> request = reimbursementRepository.findById(id);
+        Reimbursement request = reimbursementRepository.findById(id);
 
-        if(request.isPresent()) {
-            return ResponseEntity.ok(request);
+        if(request == null) {
+            return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(request);
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Employee's Functionality
 
-    @GetMapping(path = "/employees/{id}")
+    @GetMapping(path = "employees/{id}")
     public ResponseEntity getAllReimbursementsByEmployeeId(@PathVariable Integer id) {
         return ResponseEntity.ok(reimbursementRepository.findAllReimbursementsByEmployeeId(id));
     }
