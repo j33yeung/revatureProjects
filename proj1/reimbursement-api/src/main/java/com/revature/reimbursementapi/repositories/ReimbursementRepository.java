@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 /**
- * Reimbursement Repository that access the Reimbursement table in ReimbursementAPI Database
+ * Reimbursement Repository that access the reimbursements table in ReimbursementAPI Database
  * The JpaRepository allows us to create our own methods, and return whatever object type of our choosing
  * Ex. findByItemName will take in a String itemName, find the Reimbursement associated to that id,
  * and return type Reimbursement
@@ -29,8 +29,19 @@ public interface ReimbursementRepository extends JpaRepository<Reimbursement, In
 
     Reimbursement findByItemName(@Param("item_name") String itemName);
 
-    @Modifying
+    /*
+    @Modifying -- this annotation is used so @Query can use not only select, but insert, update, and delete as well
     @Query(value = "DELETE FROM reimbursements WHERE id = ?1", nativeQuery = true)
     void deleteById(int id);
+
+    Bug fixed: No longer need this query because the problem was the way employee_id from reimbursements table is attached
+    to id from employees table by a foreign key. This Many-to-One relationship was set with cascade = CascadeType.ALL,
+    and fetch = fetch.EAGER. The cascade type was causing not only the reimbursement to be deleted, but also the employee.
+    The cascade was deleted, and the problem was fixed.
+     */
+
+
+
+
 
 }

@@ -6,7 +6,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 /**
- * Employee Repository that access the Employee table in ReimbursementAPI Database
+ * Employee Repository that access the employees table in ReimbursementAPI Database
  * The JpaRepository allows us to create our own methods, and return whatever object type of our choosing
  * Ex. findById will take in an int id, find the Employee associated to that id, and return type Employee
  */

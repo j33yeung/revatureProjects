@@ -51,7 +51,7 @@ public class ReimbursementController {
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     /**
-     * Get all reimbursements that are stored in the reimbursement table
+     * Get all reimbursements that are stored in the reimbursements table
      * @return ResponseEntity - Ok when all reimbursements in database are found
      */
     @GetMapping
@@ -61,7 +61,7 @@ public class ReimbursementController {
     }
 
     /**
-     * Get reimbursement that are stored in the reimbursement table based on id provided in URI
+     * Get reimbursement that are stored in the reimbursements table based on id provided in URI
      * @return ResponseEntity - Ok if reimbursement id exist in database; 404 not found if id does not exist
      */
     @GetMapping(path = "{id}")
@@ -79,7 +79,7 @@ public class ReimbursementController {
     // Employee's Functionality
 
     /**
-     * Get all reimbursements that are stored in the reimbursement table that has the employee id provided
+     * Get all reimbursements that are stored in the reimbursements table that has the employee id provided
      * @return ResponseEntity - Ok when all reimbursements with employee id are found
      */
     @GetMapping(path = "employees/{id}")
@@ -132,7 +132,7 @@ public class ReimbursementController {
     }
 
     /**
-     * Reassign reimbursement that are stored in the reimbursement table
+     * Reassign reimbursement that are stored in the reimbursement tables
      * @return ResponseEntity - Ok if reimbursement is successfully reassigned to another employee;
      * 400 bad request if employee id or reimbursement id are invalid
      */
@@ -154,7 +154,7 @@ public class ReimbursementController {
     }
 
     /**
-     * Delete reimbursement that are stored in the reimbursement table
+     * Delete reimbursement that are stored in the reimbursements tables
      * @return ResponseEntity - Ok if reimbursement is successfully deleted based on reimbursement id
      */
     @DeleteMapping(path = "{reimbursementId}")

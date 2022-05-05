@@ -40,7 +40,7 @@ public class Reimbursement {
     @Column(name="_date")
     private LocalDate date;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="employee_id", referencedColumnName = "id")
     private Employee employee;
 

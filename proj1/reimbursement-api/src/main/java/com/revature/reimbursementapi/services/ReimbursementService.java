@@ -43,7 +43,7 @@ public class ReimbursementService {
               though this is bad practice, we only need call findById once, so we avoid repeating it here. Therefore,
               we will pass two parameters for this service: reimbursementDTO and employee.
 
-        Bug found: We cannot pass employee as a parameter because of reimbursementRepository.save(reimbursement).
+        Bug fixed: We cannot pass employee as a parameter because of reimbursementRepository.save(reimbursement).
         This service is simply setting values to the new reimbursement, and saving to the database. However, save() is
         a persist operation and can therefore only accept transient objects. In other words, if employee already exists
         and is not brand new, the save will fail. As a result, we need to call findById here before setting employee.
