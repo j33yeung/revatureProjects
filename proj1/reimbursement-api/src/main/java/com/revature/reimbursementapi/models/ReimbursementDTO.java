@@ -5,6 +5,9 @@ import lombok.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+/**
+ * DTO that is simply used to retrieve the request body for reimbursement creation
+ */
 @Getter
 @Setter
 @ToString

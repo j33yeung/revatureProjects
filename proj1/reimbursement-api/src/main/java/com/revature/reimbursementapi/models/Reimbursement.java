@@ -7,6 +7,10 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+/**
+ * Reimbursement class that will have a name, status, expenditure, date, and an employee associated to it. It also
+ * includes an item description of what the reimbursement item is.
+ */
 @Entity
 @Table(name="reimbursements")
 @Getter
