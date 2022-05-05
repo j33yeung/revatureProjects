@@ -16,11 +16,21 @@ public class EmailService {
     private ReimbursementRepository reimbursementRepository;
     final Logger logger = LoggerFactory.getLogger(EmailService.class);
 
-//    I don't need this constructor because I have @AllArgsConstructor already
-//    public EmailService(EmailRepository emailRepository) {
-//        this.emailRepository = emailRepository;
-//    }
+    /**
+     *     I don't need this constructor because I have @AllArgsConstructor already
+     *     public EmailService(EmailRepository emailRepository) {
+     *         this.emailRepository = emailRepository;
+     *     }
+     */
 
+    /**
+     * This service is used in order to create a new email and send it to the employee's email address
+     * associated to reimbursement id
+     * @param reimbursementId the id of the reimbursement is used to find the reimbursement, which will be used to find
+     *                        the reimbursement's status and employee's email address. The status of the reimbursement
+     *                        will determine the email message sent.
+     * @return the new email
+     */
     public Email createEmail(int reimbursementId) {
 
         Email newEmail = new Email();
@@ -42,7 +52,6 @@ public class EmailService {
         }
 
         emailRepository.save(newEmail);
-
         return newEmail;
     }
 

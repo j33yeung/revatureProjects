@@ -4,6 +4,9 @@ import lombok.*;
 
 import javax.persistence.*;
 
+/**
+ * Employee class that will have a name and email associated to it
+ */
 @Entity
 @Table(name="employees")
 @Getter

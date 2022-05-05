@@ -12,8 +12,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @SpringBootTest
 class EmailServiceTest {
 
@@ -31,7 +29,8 @@ class EmailServiceTest {
     private Email email;
     private EmailDTO emailDTO;
 
-
+    // This BeforeEach will update employee with id = 1, reimbursement with id = 1, emailDTO with id = 1, and email
+    // with id = 1 before each test
     @BeforeEach
     public void initEachTest(){
         employee = Employee.builder().id(1).name("Jason Yeung").email("j33yeung@gmail.com").build();
@@ -49,8 +48,10 @@ class EmailServiceTest {
         emailRepository.save(email);
     }
 
+    // When this test is run, a new email is created and tested to see if it has the correct message, corresponding
+    // to its "pending" status based on reimbursement id. After, it is deleted at the end of the test.
     @Test
-    void shouldCreateEmailforPendingStatus() {
+    void shouldCreateEmailForPendingStatus() {
 
         Email email = emailService.createEmail(emailDTO.getReimbursementId());
 
@@ -60,6 +61,8 @@ class EmailServiceTest {
         emailRepository.deleteById(email.getEmailId());
     }
 
+    // When this test is run, a new email is created and tested to see if it has the correct message, corresponding
+    // to its "approved" status based on reimbursement id. After, it is deleted at the end of the test.
     @Test
     void shouldCreateEmailForApprovedStatus() {
 
@@ -74,6 +77,8 @@ class EmailServiceTest {
         emailRepository.deleteById(email.getEmailId());
     }
 
+    // When this test is run, a new email is created and tested to see if it has the correct message, corresponding
+    // to its "declined" status based on reimbursement id. After, it is deleted at the end of the test.
     @Test
     void shouldCreateEmailForDeclinedStatus() {
 

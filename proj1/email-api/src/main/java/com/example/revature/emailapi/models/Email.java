@@ -4,6 +4,9 @@ import lombok.*;
 
 import javax.persistence.*;
 
+/**
+ * Email class that will have email address and email body message associated to it
+ */
 @Entity
 @Table(name="emails")
 @Getter
