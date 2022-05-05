@@ -26,7 +26,6 @@ public class ReimbursementService {
      * This service is used in order to create a new reimbursement, adhering to the information provided from the
      * reimbursementDTO and employee information.
      * @param reimbursementDTO DTO that contains necessary information to create a new reimbursement
-     * @param employee employee information pertaining to this reimbursement, that will be set to this reimbursement
      * @return the new reimbursement
      */
     public Reimbursement createReimbursement(ReimbursementDTO reimbursementDTO) {
