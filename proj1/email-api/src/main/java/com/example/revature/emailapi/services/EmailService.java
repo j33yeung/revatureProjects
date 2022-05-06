@@ -1,11 +1,11 @@
 package com.example.revature.emailapi.services;
 
-import com.example.revature.emailapi.models.*;
+import com.example.revature.emailapi.models.Email;
+import com.example.revature.emailapi.models.Employee;
+import com.example.revature.emailapi.models.Reimbursement;
 import com.example.revature.emailapi.repositories.EmailRepository;
 import com.example.revature.emailapi.repositories.ReimbursementRepository;
 import lombok.AllArgsConstructor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -14,7 +14,6 @@ public class EmailService {
 
     private EmailRepository emailRepository;
     private ReimbursementRepository reimbursementRepository;
-    final Logger logger = LoggerFactory.getLogger(EmailService.class);
 
     /**
      *     I don't need this constructor because I have @AllArgsConstructor already
